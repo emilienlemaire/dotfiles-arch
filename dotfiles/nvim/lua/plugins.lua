@@ -123,6 +123,7 @@ return require('packer').startup({
 
     use 'lilydjwg/colorizer'
     -- }}}
+
     -- {{{ maybe later
     --use 'npxbr/glow.nvim'
     -- }}}

@@ -85,7 +85,7 @@ local home = os.getenv('HOME')
 
 vim.api.nvim_set_var('python_host_prog', home .. '/opt/anaconda3/envs/anaconda2/bin/python')
 vim.api.nvim_set_var('python3_host_prog', home .. '/opt/anaconda3/envs/anaconda3/bin/python')
-vim.api.nvim_set_var('ruby_host_prog', '/usr/local/lib/ruby/gems/3.0.0/bin/neovim-ruby-host')
+vim.api.nvim_set_var('ruby_host_prog', home .. '/.gem/ruby/2.6.0/gems/neovim-0.8.1/exe/neovim-ruby-host')
 
 vim.api.nvim_set_var('opamshare', home .. '/.opam/default/share')
 

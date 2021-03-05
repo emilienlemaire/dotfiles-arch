@@ -1,0 +1,47 @@
+zmodload zsh/zprof
+
+test -r /Users/emilienlemaire/.opam/opam-init/init.zsh && . /Users/emilienlemaire/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/emilienlemaire/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/emilienlemaire/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/emilienlemaire/opt/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/emilienlemaire/opt/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+	compinit;
+else
+	compinit -C;
+fi;
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export PATH=$PATH:/usr/local/opt/llvm/bin
+
+export EDITOR='nvim'
+export KITTY_CONFIG_EDITOR='nvim'
+
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-15.0.2.jdk/Contents/Home
+
+# Completion for kitty
+kitty + complete setup zsh | source /dev/stdin
+export PATH="/usr/local/lib/ruby/gems/3.0.0/bin:$PATH"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+if [ -e /Users/emilienlemaire/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/emilienlemaire/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+. "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+
+eval "$(starship init zsh)"
+eval "$(perl -I ~/perl5/lib/perl5/ -Mlocal::lib)"

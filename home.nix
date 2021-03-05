@@ -4,11 +4,11 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  # Home Manager needs a bit of information about you and the
-  # paths it should manage.
   imports = [
     ./role/darwin/index.nix
     ./user/emilienlemaire.nix
+    ./languages/python.nix
+    ./languages/perl.nix
   ];
 
   # This value determines the Home Manager release that your
@@ -21,11 +21,80 @@
   # changes in each release.
   home.stateVersion = "21.05";
 
+  nixpkgs.overlays = [
+    (import (builtins.fetchTarball {
+      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+    }))
+  ];
+
+  # Packages for everywhere
   home.packages = with pkgs; [
+    # Utils
+    bat
+    highlight
+
     htop
+
     neuron-notes
-    lazygit
 
     gnupg
+
+    gnutls
+    git
+    lazygit
+
+    wget
+
+    neovim-nightly
+
+    pkg-config
+
+    # Dev
+    luajit
+    luarocks
+
+    ninja
+
+    go
+
+    nodejs
+    yarn
+
+    rustup
+
+    ocaml
+    opam
+
+    perl
+
+    python39
+
+    ruby
+    # cmake
+    # cmakeWithGui
+
+    #cpp
+    abseil-cpp
+    catch2
+    grpc
+    ncurses
+
+    #llvm
+    # TODO: Find a fix to make it work
+    # llvm_11
+    # clang-tools
+    # lld
+    # libcxx
+    # libcxxabi
+
+    #GNU Build
+    autoconf
+    automake
+    gcc
+    gdb
+
+    #lsp
+    rnix-lsp
+    texlab
   ];
 }
