@@ -1,12 +1,12 @@
 ## Config files tree
 
-- dotfiles:
+- **dotfiles**:
     Contains all the dotfiles for my config, they will usually be linked to ~/.config/<dotfiles-subdir>
-- languages:
+- **languages**:
     Contains all the packages that are language specific.
-- role:
+- **role**:
     Contains configuration by environment (either OS, or desktop environment, ...).
-- user:
+- **user**:
     Contains configurations by users
-- home.nix:
+- **home.nix**:
     Put all configurations together and configuaration agnostic packages.
