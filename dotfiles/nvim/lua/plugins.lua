@@ -49,6 +49,8 @@ return require('packer').startup({
       }
     }
 
+    use 'nvim-telescope/telescope-fzy-native.nvim'
+
     use 'arthurxavierx/vim-unicoder'
     use 'machakann/vim-sandwich'
     use {'mg979/vim-visual-multi', branch = 'master'}
