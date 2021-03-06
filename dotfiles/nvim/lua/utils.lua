@@ -60,9 +60,7 @@ function M.completion_confirm()
       require'completion'.confirmCompletion()
       return npairs.esc("<c-y>")
     else
-      vim.fn.nvim_select_popupmenu_item(0, false, false, {})
-      require'completion'.confirmCompletion()
-      return npairs.esc("<c-n><c-y>")
+      return npairs.esc("<cr>")
     end
   else
     return npairs.check_break_line_char()

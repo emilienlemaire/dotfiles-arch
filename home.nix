@@ -9,6 +9,7 @@
     ./user/emilienlemaire.nix
     ./languages/python.nix
     ./languages/perl.nix
+    ./languages/llvm.nix
   ];
 
   # This value determines the Home Manager release that your
@@ -82,7 +83,8 @@
     #llvm
     # TODO: Find a fix to make it work
     # llvm_11
-    # clang-tools
+    #clang_11
+    #clang-tools
     # lld
     # libcxx
     # libcxxabi
@@ -90,8 +92,8 @@
     #GNU Build
     autoconf
     automake
-    gcc
-    gdb
+    #gcc
+    #gdb
 
     #lsp
     rnix-lsp
