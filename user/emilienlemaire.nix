@@ -23,6 +23,7 @@
       plugins = [
         "git"
         "fast-syntax-highlighting"
+        "zsh-vi-mode"
       ];
     };
   };
