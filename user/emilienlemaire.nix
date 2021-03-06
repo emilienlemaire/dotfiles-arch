@@ -36,6 +36,7 @@
       source = ../dotfiles/kitty;
       recursive = true;
     };
+    "starship.toml".source = ../dotfiles/starship/starship.toml;
   };
 
   home.packages = with pkgs; [
