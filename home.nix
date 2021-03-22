@@ -63,14 +63,17 @@
 
     rustup
 
-    ocaml
-    opam
+    #ocaml
+    #opam
 
     perl
 
     python39
 
     ruby
+
+    #tree-sitter
+    emscripten
     # cmake
     # cmakeWithGui
 

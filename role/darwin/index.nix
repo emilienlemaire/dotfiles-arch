@@ -2,4 +2,8 @@
 
 {
   home.homeDirectory = "/Users/emilienlemaire";
+
+  home.packages = with pkgs; [
+    bash
+  ];
 }

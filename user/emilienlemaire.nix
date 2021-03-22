@@ -21,9 +21,9 @@
       enable = true;
       custom = "\$HOME/.config/nixpkgs/dotfiles/zsh/custom";
       plugins = [
+        "zsh-vim-mode"
         "git"
         "fast-syntax-highlighting"
-        "zsh-vi-mode"
       ];
     };
   };
@@ -47,5 +47,6 @@
 
     starship
     zsh-fast-syntax-highlighting
+    font-awesome
   ];
 }

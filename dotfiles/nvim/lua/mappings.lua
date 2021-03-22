@@ -92,8 +92,8 @@ utils.map_lua('n', '<leader>dl', [[require'dap'.run_last()]], options)
 
 -- {{{ lspsaga
 utils.map_lua('n', 'gh', [[require'lspsaga.provider'.lsp_finder()]], options)
-utils.map_lua('n', '<leader>ca', [[require'lspaga.codeaction'.code_action()]], options)
-utils.map('v', '<leader>ca', [[<cmd>'<,'>lua require'lspsaga.codeaction'.range_code_action()]], options)
+utils.map_lua('n', '<leader>ca', [[require('lspsaga.codeaction').code_action()]], options)
+utils.map('v', '<leader>ca', [[<cmd>'<,'>lua require('lspsaga.codeaction').range_code_action()]], options)
 utils.map_lua('n', 'K', [[require'lspsaga.hover'.render_hover_doc()]], options)
 utils.map_lua('n', '<C-f>', [[require'lspsaga.action'.smart_scroll_with_saga(1)]], options)
 utils.map_lua('n', '<C-b>', [[require'lspsaga.action'.smart_scroll_with_saga(-1)]], options)
@@ -108,7 +108,7 @@ utils.map_lua('n', ']e', [[require'lspsaga.diagnostic'.lsp_jump_diagnostic_next(
 -- {{{ neuron
 utils.map_lua('n', '<cr>', [[require'neuron'.enter_link()]])
 utils.map_lua('n', 'ni', [[require'neuron'.goto_index()]], {noremap = true})
-utils.map_lua('n', 'nn', [[require'neuron.prompt'.prompt_new_zettel()]], {noremap = true})
+utils.map_lua('n', 'cnn', [[require'neuron.prompt'.prompt_new_zettel()]], {noremap = true})
 utils.map_lua('n', 'ne', [[require'neuron.cmd'.new_edit(require'neuron.config'.neuron_dir)]], {noremap = true})
 utils.map_lua('n', 'nz', [[require'neuron.telescope'.find_zettels()]], {noremap = true})
 utils.map_lua('n', 'nZ', [[require'neuron.telescope'.find_zettels({insert = true})]], {noremap = true})

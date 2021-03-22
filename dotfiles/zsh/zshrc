@@ -30,6 +30,7 @@ export PATH=$PATH:/usr/local/opt/llvm/bin
 
 export EDITOR='nvim'
 export KITTY_CONFIG_EDITOR='nvim'
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-15.0.2.jdk/Contents/Home
 
