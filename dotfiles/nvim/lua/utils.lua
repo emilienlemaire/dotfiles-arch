@@ -53,11 +53,45 @@ function M.reload_plugins()
     packer.compile()
 end
 
+local t = function(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+local check_back_space = function()
+  local col = vim.fn.col('.') - 1
+  if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+    return true
+  else
+    return false
+  end
+end
+
+function M.tab_complete()
+  if vim.fn.pumvisible() == 1 then
+    return t "<C-n>"
+  elseif vim.fn.call("vsnip#available", {1}) == 1 then
+    return t "<Plug>(vsnip-expand-or-jump)"
+  elseif check_back_space() then
+    return t "<Tab>"
+  else
+    return vim.fn['compe#complete']()
+  end
+end
+
+function M.s_tab_complete()
+  if vim.fn.pumvisible() then
+    return t "<C-p>"
+  elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
+    t "<Plug>(vsnip-jump-prev)"
+  else
+    return t "<S-Tab>"
+  end
+end
+
 function M.completion_confirm()
   local npairs = require('nvim-autopairs')
   if vim.fn.pumvisible() ~= 0 then
     if vim.fn.complete_info()["selected"] ~= -1 then
-      require'completion'.confirmCompletion()
       return npairs.esc("<c-y>")
     else
       return npairs.esc("<cr>")

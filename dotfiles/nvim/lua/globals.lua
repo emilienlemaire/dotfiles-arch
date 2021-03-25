@@ -5,6 +5,9 @@ Date              : 23.02.2021
 Last Modified Date: 23.02.2021
 Last Modified By  : Emilien Lemaire <emilien.lem@icloud.com>
 --]]--
+--{{
+vim.g.lexima_no_default_rules = true
+--}}
 -- {{ completion
 vim.g.completion_confirm_key = ""
 vim.g.completion_enable_snippet = 'vim-vsnip'

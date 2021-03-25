@@ -1,8 +1,5 @@
-vim.cmd [[ packadd completion-nvim ]]
-
 local lsp = require('lspconfig')
 local nvim_status = require('lsp-status')
-local completion = require('completion')
 local status = require('elem.lsp_status')
 local clang_tidy = require('clang-tidy')
 
@@ -13,9 +10,6 @@ vim.lsp.set_log_level("trace")
 status.activate()
 
 local custom_attach = function(client)
-  completion.on_attach({
-    chain_completion_list=require('elem.completion').chain_completion_list,
-  })
   status.on_attach(client)
 end
 
@@ -46,9 +40,6 @@ local custom_attach_clangd = function(client)
       '-misc-no-recursion'
     }
   }
-  completion.on_attach({
-    chain_completion_list=require('elem.completion').chain_completion_list,
-  })
   status.on_attach(client)
 end
 

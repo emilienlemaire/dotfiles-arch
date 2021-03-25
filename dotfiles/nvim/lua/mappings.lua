@@ -21,16 +21,22 @@ utils.map('n', '<leader>g',
 options)
 --}}}
 
---{{{ completion_nvim
-utils.map('i', '<CR>', [[v:lua.utils.completion_confirm()]], {expr = true})
-utils.map('i', '<Tab>',
-  [[pumvisible() ? "\<C-n>" : vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<Tab>']],
-  {expr = true}
-)
-utils.map('i', '<S-Tab>',
-  [[ pumvisible() ? "\<C-p>" : vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>']],
-  {expr = true}
-)
+--{{{ compe
+vim.cmd [[call lexima#set_default_rules()]]
+utils.map('i', '<C-Space>', 'compe#complete()', {
+  noremap = true,
+  silent = true,
+  expr = true
+})
+utils.map('i', '<CR>', [[compe#confirm(lexima#expand('<LT>CR>', 'i'))]], {
+  noremap = true,
+  silent = true,
+  expr = true
+})
+utils.map('i', '<Tab>', [[v:lua.utils.tab_complete()]],{ expr = true })
+utils.map('s', '<Tab>', [[v:lua.utils.tab_complete()]],{ expr = true })
+utils.map('i', '<S-Tab>', [[v:lua.utils.s_tab_complete()]],{ expr = true })
+utils.map('s', '<S-Tab>', [[v:lua.utils.s_tab_complete()]],{ expr = true })
 -- }}}
 
 -- {{{ vsnip
@@ -40,8 +46,6 @@ utils.map('s', '<C-j>', [[vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-j>']
 utils.map('i', '<C-j>', [[vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>']], {expr = true})
 utils.map('s', '<C-j>', [[vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>']], {expr = true})
 
-utils.map('s', '<Tab>', [[vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : <Tab>]], {expr = true})
-utils.map('s', '<S-Tab>', [[vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : <Tab>]], {expr = true})
 -- }}}
 
 -- {{{ diagnostics
@@ -106,7 +110,7 @@ utils.map_lua('n', ']e', [[require'lspsaga.diagnostic'.lsp_jump_diagnostic_next(
 -- }}}
 
 -- {{{ neuron
-utils.map_lua('n', '<cr>', [[require'neuron'.enter_link()]])
+-- utils.map_lua('n', '<cr>', [[require'neuron'.enter_link()]])
 utils.map_lua('n', 'ni', [[require'neuron'.goto_index()]], {noremap = true})
 utils.map_lua('n', 'cnn', [[require'neuron.prompt'.prompt_new_zettel()]], {noremap = true})
 utils.map_lua('n', 'ne', [[require'neuron.cmd'.new_edit(require'neuron.config'.neuron_dir)]], {noremap = true})

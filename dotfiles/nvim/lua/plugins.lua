@@ -7,13 +7,14 @@ return require('packer').startup({
     --{{{ LSP
     use 'neovim/nvim-lspconfig'
 
-    use 'nvim-lua/completion-nvim'
-    use 'steelsojka/completion-buffers'
+    -- use 'nvim-lua/completion-nvim'
+    -- use 'steelsojka/completion-buffers'
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
     use 'nvim-treesitter/playground'
-    use 'nvim-treesitter/completion-treesitter'
+    -- use 'nvim-treesitter/completion-treesitter'
     use 'nvim-treesitter/nvim-treesitter-refactor'
-    use 'kristijanhusak/completion-tags'
+    -- use 'kristijanhusak/completion-tags'
+    use 'hrsh7th/nvim-compe'
 
     use 'wbthomason/lsp-status.nvim'
 
@@ -38,7 +39,8 @@ return require('packer').startup({
       requires = { 'nvim-treesitter/nvim-treesitter' }
     }
 
-    use 'windwp/nvim-autopairs'
+    -- use 'windwp/nvim-autopairs'
+    use 'cohama/lexima.vim'
 
     use 'nvim-lua/popup.nvim'
     use {

@@ -26,7 +26,11 @@
         "fast-syntax-highlighting"
       ];
     };
+    shellAliases = {
+      ssh = "kitty +kitten ssh";
+    };
   };
+
 
   xdg.configFile = {
     "nvim" = {

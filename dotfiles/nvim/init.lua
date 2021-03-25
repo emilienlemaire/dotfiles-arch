@@ -1,3 +1,13 @@
+--[[--
+File              : init.lua
+Date              : 25.03.2021
+Last Modified Date: 25.03.2021
+--]]--
+--[[--
+File              : init.lua
+Date              : 25.03.2021
+Last Modified Date: 25.03.2021
+--]]--
 local g = vim.g
 local o = vim.o
 local cmd = vim.cmd
@@ -56,7 +66,7 @@ if o.shell == 'fish$' then
 end
 
 
-o.completeopt = [[menuone,noinsert,noselect]]
+o.completeopt = [[menuone,noselect]]
 
 -- General mappings, not depending on any plugins
 vim.api.nvim_set_keymap('v', 'J', [[:m '>+1<cr>gv=gv]], {noremap = true})
@@ -115,9 +125,8 @@ R('nvim-web-devicons').setup()
 R('gitsigns').setup()
 R('lspkind').init()
 R('indent_guides').setup()
-R('nvim-autopairs').setup()
 R('elem.lspsaga')
-R('elem.completion')
+R('elem.nvim-compe')
 R('elem.treesitter')
 R('elem.statusline')
 R('elem.plenary')
