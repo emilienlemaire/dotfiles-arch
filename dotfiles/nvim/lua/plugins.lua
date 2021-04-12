@@ -1,3 +1,8 @@
+--[[--
+File              : plugins.lua
+Date              : 12.04.2021
+Last Modified Date: 12.04.2021
+--]]--
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup({
@@ -120,6 +125,7 @@ return require('packer').startup({
     use 'ryanoasis/vim-devicons'
 
     use 'kyazdani42/nvim-web-devicons'
+    use 'yamatsum/nvim-web-nonicons'
 
     use 'Th3Whit3Wolf/space-nvim'
 
@@ -157,3 +163,7 @@ return require('packer').startup({
     },
   }
 })
+
+
+
+

@@ -78,10 +78,16 @@ utils.map('n', '<leader>sr', '<Plug>(ripple_send_motion)ip')
 -- }}}
 --
 -- {{{ telescope
-utils.map_lua('n', '<leader>sf', [[require'telescope.builtin'.git_files{}]])
-utils.map_lua('n', '<leader>p', [[require'telescope.builtin'.find_files{}]])
-utils.map_lua('n', '<leader>rg', [[require'telescope.builtin'.live_grep{}]])
-utils.map_lua('n', '<leader>ls', [[require'telescope.builtin'.lsp_references{}]])
+utils.map_lua('n', '<leader>sf', [[require'telescope.builtin'.git_files{}]], options)
+utils.map_lua('n', '<leader>p', [[require'telescope.builtin'.find_files{}]], options)
+utils.map_lua('n', '<leader>rg', [[require'telescope.builtin'.live_grep{}]], options)
+utils.map_lua('n', '<leader>ls', [[require'telescope.builtin'.lsp_references{}]], options)
+utils.map_lua('n', '<leader>ws', [[require'telescope.builtin'.lsp_workspace_symbols{}]], options)
+utils.map_lua('n', '<leader>ds', [[require'telescope.builtin'.lsp_document_symbols{}]], options)
+utils.map_lua('n', '<leader>dg', [[require'telescope.builtin'.lsp_document_diagnostics{}]], options)
+utils.map_lua('n', '<leader>wg', [[require'telescope.builtin'.lsp_workspace_diagnostics{}]], options)
+utils.map_lua('n', '<leader>ec', [[require'elem.telescope'.edit_config{}]], options)
+utils.map_lua('n', '<leader>ff', [[require'elem.telescope'.curbufc{}]], options)
 -- }}}
 --
 -- {{{ dap

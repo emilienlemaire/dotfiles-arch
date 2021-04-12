@@ -68,8 +68,6 @@
 
     perl
 
-    python39
-
     ruby
 
     #tree-sitter

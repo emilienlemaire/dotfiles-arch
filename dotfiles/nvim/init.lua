@@ -1,5 +1,10 @@
 --[[--
 File              : init.lua
+Date              : 12.04.2021
+Last Modified Date: 12.04.2021
+--]]--
+--[[--
+File              : init.lua
 Date              : 25.03.2021
 Last Modified Date: 25.03.2021
 --]]--
@@ -25,6 +30,7 @@ b.shiftwidth = 4
 b.tabstop = 4
 b.smartindent = true
 b.modeline = false
+b.swapfile = false
 
 o.backspace = [[indent,eol,start]]
 o.hidden = true
@@ -125,17 +131,23 @@ R('nvim-web-devicons').setup()
 R('gitsigns').setup()
 R('lspkind').init()
 R('indent_guides').setup()
-R('elem.lspsaga')
-R('elem.nvim-compe')
-R('elem.treesitter')
-R('elem.statusline')
-R('elem.plenary')
-R('elem.telescope')
-R('elem.neuron')
-R('elem.neofs')
-R('mappings')
-R('globals')
-R('elem.dap')
+RELOADER = function()
+  R('elem.lspsaga')
+  R('elem.nvim-compe')
+  R('elem.treesitter')
+  R('elem.statusline')
+  R('elem.plenary')
+  R('elem.telescope')
+  R('elem.neuron')
+  R('elem.neofs')
+  R('mappings')
+  R('globals')
+  R('elem.dap')
+end
+
+RELOADER()
+
+utils.map_lua('n', '<leader>rc', 'RELOADER()', {noremap = true})
 
 cmd [[colorscheme space-nvim]]
 cmd [[highlight LspDiagnosticsUnderline cterm=undercurl gui=undercurl]]

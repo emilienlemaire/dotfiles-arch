@@ -1,8 +1,18 @@
 {config, pkgs, ...}:
 
+with pkgs;
+let
+  my-python-packages = python-packages: with python-packages; [
+    numpy
+    conda
+    python_magic
+  ];
+  python-with-myp-packages = python3.withPackages my-python-packages;
+in
+
 {
   home.username = "emilienlemaire";
-  
+
   programs.git = {
     enable = true;
     userEmail = "emilien.lem@icloud.com";
@@ -52,5 +62,8 @@
     starship
     zsh-fast-syntax-highlighting
     font-awesome
+
+    python-with-myp-packages
   ];
+
 }
