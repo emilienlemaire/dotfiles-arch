@@ -144,7 +144,7 @@ local configs = require('lspconfig/configs')
 configs.ocamlls = {
   default_config = {
     cmd = {'ocamllsp'};
-    filetypes = {'ocaml'};
+    filetypes = {'ocaml', 'ocaml_interface'};
     root_dir = function(fname)
       return lsp.util.find_git_ancestor(fname) or vim.loop.os_homedir()
     end;

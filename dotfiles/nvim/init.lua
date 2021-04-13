@@ -94,7 +94,8 @@ utils.create_augroup({
 
 utils.create_augroup({
   {'BufNewFile,BufReadPost', '*.md', 'set', 'filetype=markdown'},
-  {'BufRead,BufNewFile', '*.yapl', 'set', 'filetype=yapl'}
+  {'BufRead,BufNewFile', '*.yapl', 'set', 'filetype=yapl'},
+  {'BufRead,BufNewFile', '*.mli', 'set', 'filetype=ocaml_interface'}
 }, 'BufE')
 
 local home = os.getenv('HOME')
