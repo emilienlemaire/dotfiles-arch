@@ -1,5 +1,5 @@
 local saga = require('lspsaga')
 
 saga.init_lsp_saga{
-  border_style = 2
+  border_style = "round"
 }
