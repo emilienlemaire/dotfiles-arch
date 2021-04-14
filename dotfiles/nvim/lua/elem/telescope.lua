@@ -15,7 +15,6 @@ end
 reloader()
 
 local themes = require('telescope.themes')
-local _ = require('nvim-nonicons')
 
 require('telescope').setup{
   defaults = {

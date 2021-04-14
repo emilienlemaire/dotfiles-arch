@@ -1,18 +1,3 @@
---[[--
-File              : init.lua
-Date              : 12.04.2021
-Last Modified Date: 12.04.2021
---]]--
---[[--
-File              : init.lua
-Date              : 25.03.2021
-Last Modified Date: 25.03.2021
---]]--
---[[--
-File              : init.lua
-Date              : 25.03.2021
-Last Modified Date: 25.03.2021
---]]--
 local g = vim.g
 local o = vim.o
 local cmd = vim.cmd
