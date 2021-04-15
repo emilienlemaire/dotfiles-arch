@@ -64,9 +64,9 @@ utils.map('n', '<leader>tg', ':FloatermNew lazygit<cr>', options)
 
 -- {{{ lsp
 utils.map_lua('n', '<c-]>', [[vim.lsp.buf.definition()]], options)
-utils.map_lua('n', '<leader>rn', [[vim.lsp.buf.rename()]], options)
 utils.map_lua('n', 'gD', [[vim.lsp.buf.implementation()]], options)
 utils.map_lua('n', '<c-K>', [[vim.lsp.buf.signature_help()]], options)
+utils.map_lua('n', 'K', [[vim.lsp.buf.hover()]], options)
 utils.map_lua('n', 'gT', [[vim.lsp.buf.type_definition()]], options)
 utils.map_lua('n', 'grf', [[vim.lsp.buf.references()]], options)
 utils.map_lua('n', 'g0', [[vim.lsp.buf.document_symbol()]], options)
@@ -88,8 +88,6 @@ utils.map_lua('n', '<leader>ds', [[require'telescope.builtin'.lsp_document_symbo
 utils.map_lua('n', '<leader>dg', [[require'telescope.builtin'.lsp_document_diagnostics{}]], options)
 utils.map_lua('n', '<leader>wg', [[require'telescope.builtin'.lsp_workspace_diagnostics{}]], options)
 utils.map_lua('n', '<leader>ld', [[require'telescope.builtin'.lsp_definition{}]], options)
-utils.map_lua('n', '<leader>ca', [[require'telescope.builtin'.lsp_code_actions{}]], options)
-utils.map('v', '<leader>ca', [[<cmd>'<,'>lua require'telescope.builtin'.lsp_range_code_actions{}<CR>]], options)
 utils.map_lua('n', '<leader>ec', [[require'elem.telescope'.edit_config{}]], options)
 utils.map_lua('n', '<leader>ff', [[require'elem.telescope'.curbufc{}]], options)
 -- }}}
@@ -105,16 +103,18 @@ utils.map_lua('n', '<leader>dl', [[require'dap'.run_last()]], options)
 -- }}}
 
 -- {{{ lspsaga
+utils.map_lua('n', '<leader>rn', [[require('lspsaga.rename').rename()]], options)
 utils.map_lua('n', 'gh', [[require'lspsaga.provider'.lsp_finder()]], options)
-utils.map_lua('n', 'K', [[require'lspsaga.hover'.render_hover_doc()]], options)
 utils.map_lua('n', '<C-f>', [[require'lspsaga.action'.smart_scroll_with_saga(1)]], options)
 utils.map_lua('n', '<C-b>', [[require'lspsaga.action'.smart_scroll_with_saga(-1)]], options)
 utils.map_lua('n', 'gs', [[require'lspsaga.signaturehelp'.signature_help()]], options)
---utils.map_lua('n', '<leader>rn', [[require'lspsaga.rename'.rename()]], options)
+utils.map_lua('n', '<leader>rn', [[require'lspsaga.rename'.rename()]], options)
 utils.map_lua('n', 'gd', [[require'lspsaga.provider'.preview_definition()]], options)
 utils.map_lua('n', '<leader>cd', [[require'lspsaga.diagnostic'.show_line_diagnositcs()]], options)
 utils.map_lua('n', '[e', [[require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()]], options)
 utils.map_lua('n', ']e', [[require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()]], options)
+utils.map_lua('n', '<leader>ca', [[require('lspsaga.codeaction').code_action()]], options)
+utils.map('v', '<leader>ca', [[<cmd>'<,'>lua require('lspsaga.codeaction').range_code_action()<CR>]], options)
 -- }}}
 
 -- {{{ neuron
