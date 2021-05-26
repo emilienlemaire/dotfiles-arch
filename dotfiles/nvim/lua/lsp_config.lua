@@ -127,6 +127,14 @@ require('nlua.lsp.nvim').setup(require('lspconfig'), {
   }
 })
 
+local htmlCapabilities = vim.lsp.protocol.make_client_capabilities()
+htmlCapabilities.textDocument.completion.completionItem.snippetSupport = true
+
+lsp.html.setup {
+  on_attach = custom_attach,
+  capabilities = htmlCapabilities
+}
+
 lsp.pyls.setup({
   on_attach = custom_attach
 })
@@ -144,7 +152,7 @@ local configs = require('lspconfig/configs')
 configs.ocamlls = {
   default_config = {
     cmd = {'ocamllsp'};
-    filetypes = {'ocaml', 'ocaml_interface'};
+    filetypes = {'ocaml', 'ocaml_interface', 'ocaml.ocaml_interface', 'menhir', 'ocamllex'};
     root_dir = function(fname)
       return lsp.util.find_git_ancestor(fname) or vim.loop.os_homedir()
     end;

@@ -59,3 +59,4 @@ function conda_auto_env() {
 }
 
 export PROMPT_COMMAND="conda_auto_env;$PROMPT_COMMAND"
+export XML_CATALOG_FILES="/usr/local/etc/xml/catalog"

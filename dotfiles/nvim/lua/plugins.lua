@@ -21,6 +21,8 @@ return require('packer').startup({
     --[[ use 'dense-analysis/ale'
     use 'nathunsmitty/nvim-ale-diagnostic' ]]
 
+    use 'sbdchd/neoformat'
+
     use 'emilienlemaire/clang-tidy.nvim'
 
     use 'hrsh7th/vim-vsnip'
@@ -52,6 +54,7 @@ return require('packer').startup({
     }
 
     use 'nvim-telescope/telescope-fzy-native.nvim'
+    use {'nvim-telescope/telescope-fzf-native.nvim', run='make'}
 
     use 'arthurxavierx/vim-unicoder'
     use 'machakann/vim-sandwich'
@@ -76,7 +79,8 @@ return require('packer').startup({
     -- TODO: Look into how it can be fixed
     use 'TimUntersberger/neofs'
 
-    use {'~/Developpement/lua/neuron.nvim', branch = 'unstable'}
+    --use {'oberblastmeister/neuron.nvim', branch = 'unstable'}
+    use 'vimwiki/vimwiki'
 
     use 'b3nj5m1n/kommentary'
 

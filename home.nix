@@ -70,7 +70,7 @@
 
     ruby
 
-    #tree-sitter
+    tree-sitter
     emscripten
     # cmake
     # cmakeWithGui

@@ -12,6 +12,10 @@ local options = {
 
 --{{{ genarals
 utils.map_lua('n', '<leader>rl', [[require'utils'.reload_plugins()]], options)
+utils.map('t', '<c-h>', '<c-\\><c-n>:wincmd h<cr>', options)
+utils.map('t', '<c-j>', '<c-\\><c-n>:wincmd j<cr>', options)
+utils.map('t', '<c-k>', '<c-\\><c-n>:wincmd k<cr>', options)
+utils.map('t', '<c-l>', '<c-\\><c-n>:wincmd l<cr>', options)
 --}}}
 
 --{{{ cmake
@@ -66,7 +70,6 @@ utils.map('n', '<leader>tg', ':FloatermNew lazygit<cr>', options)
 utils.map_lua('n', '<c-]>', [[vim.lsp.buf.definition()]], options)
 utils.map_lua('n', 'gD', [[vim.lsp.buf.implementation()]], options)
 utils.map_lua('n', '<c-K>', [[vim.lsp.buf.signature_help()]], options)
-utils.map_lua('n', 'K', [[vim.lsp.buf.hover()]], options)
 utils.map_lua('n', 'gT', [[vim.lsp.buf.type_definition()]], options)
 utils.map_lua('n', 'grf', [[vim.lsp.buf.references()]], options)
 utils.map_lua('n', 'g0', [[vim.lsp.buf.document_symbol()]], options)
@@ -114,23 +117,10 @@ utils.map_lua('n', '<leader>cd', [[require'lspsaga.diagnostic'.show_line_diagnos
 utils.map_lua('n', '[e', [[require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()]], options)
 utils.map_lua('n', ']e', [[require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()]], options)
 utils.map_lua('n', '<leader>ca', [[require('lspsaga.codeaction').code_action()]], options)
+utils.map_lua('n', 'K', [[require('lspsaga.hover').render_hover_doc()]], options)
 utils.map('v', '<leader>ca', [[<cmd>'<,'>lua require('lspsaga.codeaction').range_code_action()<CR>]], options)
 -- }}}
 
--- {{{ neuron
--- utils.map_lua('n', '<cr>', [[require'neuron'.enter_link()]])
-utils.map_lua('n', 'ni', [[require'neuron'.goto_index()]], {noremap = true})
-utils.map_lua('n', 'cnn', [[require'neuron.prompt'.prompt_new_zettel()]], {noremap = true})
-utils.map_lua('n', 'ne', [[require'neuron.cmd'.new_edit(require'neuron.config'.neuron_dir)]], {noremap = true})
-utils.map_lua('n', 'nz', [[require'neuron.telescope'.find_zettels()]], {noremap = true})
-utils.map_lua('n', 'nZ', [[require'neuron.telescope'.find_zettels({insert = true})]], {noremap = true})
-utils.map_lua('n', 'nb', [[require'neuron/telescope'.find_backlinks()]], {noremap = true})
-utils.map_lua('n', 'nB', [[require'neuron/telescope'.find_backlinks({insert = true})]], {noremap = true})
-utils.map_lua('n', 'nt', [[require'neuron/telescope'.find_tags()]])
-utils.map_lua('n', 'ns', [[require'neuron'.rib {address = "127.0.0.1:8200", verbose = true}]], {noremap = true})
-utils.map_lua('n', 'n]', [[require'neuron'.goto_next_extmark()]], {noremap = true})
-utils.map_lua('n', 'n[', [[require'neuron'.goto_prev_extmark()]], {noremap = true})
--- }}}
 -- {{{ neofs
 utils.map_lua('n', '<leader>f', [[require'neofs'.open()]], options)
 -- }}}

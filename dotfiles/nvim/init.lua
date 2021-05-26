@@ -1,3 +1,8 @@
+--[[--
+File              : init.lua
+Date              : 26.04.2021
+Last Modified Date: 26.04.2021
+--]]--
 local g = vim.g
 local o = vim.o
 local cmd = vim.cmd
@@ -19,7 +24,7 @@ b.swapfile = false
 
 o.backspace = [[indent,eol,start]]
 o.hidden = true
-w.winfixwidth = true
+w.winfixwidth = false
 
 o.lazyredraw = true
 
@@ -59,6 +64,9 @@ end
 
 o.completeopt = [[menuone,noselect]]
 
+o.ignorecase = true
+o.smartcase = true
+
 -- General mappings, not depending on any plugins
 vim.api.nvim_set_keymap('v', 'J', [[:m '>+1<cr>gv=gv]], {noremap = true})
 vim.api.nvim_set_keymap('v', 'K', [[:m '<-2<cr>gv=gv]], {noremap = true})
@@ -73,14 +81,21 @@ vim.api.nvim_set_keymap('n', '<Right>', [[:echoerr "Do not do that!!"<cr>]], {no
 
 utils.create_augroup({
   {'FileType', '*', 'setlocal', 'shiftwidth=4'},
-  {'FileType', 'ocaml,lua,nix', 'setlocal', 'shiftwidth=2'},
-  {'FileType', 'dap-rel', [[lua require('dap.ext.autocompl').attach()]]}
+  {'FileType', 'ocaml,ocaml.ocaml_interface,lua,nix,javascript,js,html', 'setlocal', 'shiftwidth=2'},
+  {'FileType', 'dap-rel', [[lua require('dap.ext.autocompl').attach()]]},
+  {
+    'FileType',
+    'ocaml,ocaml.ocaml_interface,menhir,ocamllex',
+    'source',
+    [[~/.opam/default/share/ocp-indent/vim/indent/ocaml.vim]]},
 }, 'Tab2')
 
 utils.create_augroup({
-  {'BufNewFile,BufReadPost', '*.md', 'set', 'filetype=markdown'},
+  {'BufRead,BufNewFile', '*.md', 'set', 'filetype=markdown'},
   {'BufRead,BufNewFile', '*.yapl', 'set', 'filetype=yapl'},
-  {'BufRead,BufNewFile', '*.mli', 'set', 'filetype=ocaml_interface'}
+  {'BufRead,BufNewFile', '*.mli', 'set', 'filetype=ocaml.ocaml_interface'},
+  {'BufRead,BufNewFile', '*.mly', 'set', 'filetype=menhir'},
+  {'BufRead,BufNewFile', '*.mll', 'set', 'filetype=ocamllex'}
 }, 'BufE')
 
 local home = os.getenv('HOME')
@@ -124,7 +139,6 @@ RELOADER = function()
   R('elem.statusline')
   R('elem.plenary')
   R('elem.telescope')
-  R('elem.neuron')
   R('elem.neofs')
   R('mappings')
   R('globals')
@@ -137,6 +151,7 @@ utils.map_lua('n', '<leader>rc', 'RELOADER()', {noremap = true})
 
 cmd [[colorscheme space-nvim]]
 cmd [[highlight LspDiagnosticsUnderline cterm=undercurl gui=undercurl]]
+cmd [[highlight link TSError Normal]]
 
 cmd [[
 command! -complete=file -nargs=* DebugC lua require "elem.dap".start_c_debugger({<f-args>}, "lldb")

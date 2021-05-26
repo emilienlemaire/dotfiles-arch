@@ -19,6 +19,9 @@ in
     userName = "Emilien Lemaire";
     signing.key = "5D293308027D1A5F";
     signing.signByDefault = true;
+    extraConfig = {
+      init.defaultBranch = "main";
+    };
   };
 
   programs.zsh = {
@@ -64,6 +67,15 @@ in
     font-awesome
 
     python-with-myp-packages
+
+    docker
+
+    nodePackages.vscode-html-languageserver-bin
+
+    tree-sitter
+
+    glew
+    glfw3
   ];
 
 }
