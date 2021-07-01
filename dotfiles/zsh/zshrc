@@ -4,14 +4,14 @@ test -r /Users/emilienlemaire/.opam/opam-init/init.zsh && . /Users/emilienlemair
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/emilienlemaire/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/Users/emilienlemaire/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/emilienlemaire/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/emilienlemaire/opt/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "/Users/emilienlemaire/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/emilienlemaire/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/emilienlemaire/opt/anaconda3/bin:$PATH"
+        export PATH="/Users/emilienlemaire/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -47,16 +47,3 @@ if [ -e /Users/emilienlemaire/.nix-profile/etc/profile.d/nix.sh ]; then . /Users
 eval "$(starship init zsh)"
 eval "$(perl -I ~/perl5/lib/perl5/ -Mlocal::lib)"
 
-function conda_auto_env() {
-  if [ -e "environment.yml" ]; then
-    ENV_NAME=$(head -n 1 environment.yml | cut -f2 -d ' ')
-    # Check if you are already in the environment
-    if [[ $CONDA_PREFIX != *$ENV_NAME* ]]; then
-      # Try to activate environment
-      source activate $ENV_NAME &>/dev/null
-    fi
-  fi
-}
-
-export PROMPT_COMMAND="conda_auto_env;$PROMPT_COMMAND"
-export XML_CATALOG_FILES="/usr/local/etc/xml/catalog"

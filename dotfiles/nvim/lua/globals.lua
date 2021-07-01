@@ -93,7 +93,7 @@ vim.g.dap_virtual_text = true
 
 -- {{
 vim.g.markdown_fenced_languages = {
-  'plsql', 'sql', 'python', 'lua', 'cpp'
+  'plsql', 'sql', 'python', 'lua', 'cpp', 'typescript', 'typescriptreact', 'javascript', 'javascriptreact'
 }
 -- }}
 
@@ -110,7 +110,8 @@ vim.g.header_auto_add_header = false
 -- }}
 
 -- {{{ space.nvim
-vim.g.space_nvim_transparent_bg = true
+vim.g.space_vim_transp_bg = true
+vim.g.one_nvim_transparent_bg = true
 -- }}}
 
 -- {{{ neoformat

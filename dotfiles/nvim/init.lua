@@ -1,8 +1,3 @@
---[[--
-File              : init.lua
-Date              : 26.04.2021
-Last Modified Date: 26.04.2021
---]]--
 local g = vim.g
 local o = vim.o
 local cmd = vim.cmd
@@ -81,7 +76,12 @@ vim.api.nvim_set_keymap('n', '<Right>', [[:echoerr "Do not do that!!"<cr>]], {no
 
 utils.create_augroup({
   {'FileType', '*', 'setlocal', 'shiftwidth=4'},
-  {'FileType', 'ocaml,ocaml.ocaml_interface,lua,nix,javascript,js,html', 'setlocal', 'shiftwidth=2'},
+  {
+    'FileType',
+    'ocaml,ocaml.ocaml_interface,lua,nix,javascript,js,ts,tsx,typescript,typescriptreact,html',
+    'setlocal',
+    'shiftwidth=2'
+  },
   {'FileType', 'dap-rel', [[lua require('dap.ext.autocompl').attach()]]},
   {
     'FileType',
@@ -98,10 +98,21 @@ utils.create_augroup({
   {'BufRead,BufNewFile', '*.mll', 'set', 'filetype=ocamllex'}
 }, 'BufE')
 
+_G.setHighlights = function()
+  cmd [[highlight LspDiagnosticsUnderlineError cterm=undercurl gui=undercurl]]
+  cmd [[highlight LspDiagnosticsUnderlineHint cterm=undercurl gui=undercurl]]
+  cmd [[highlight LspDiagnosticsUnderlineInformation cterm=undercurl gui=undercurl]]
+  cmd [[highlight LspDiagnosticsUnderlineWarning cterm=undercurl gui=undercurl]]
+end
+
+utils.create_augroup({
+  {"ColorScheme", "*", "call", "v:lua.setHighlights()"}
+}, "UndercurlDiags")
+
 local home = os.getenv('HOME')
 
-vim.api.nvim_set_var('python_host_prog', home .. '/opt/anaconda3/envs/anaconda2/bin/python')
-vim.api.nvim_set_var('python3_host_prog', home .. '/opt/anaconda3/envs/anaconda3/bin/python')
+vim.api.nvim_set_var('python_host_prog', home .. '/miniconda3/envs/conda2/bin/python')
+vim.api.nvim_set_var('python3_host_prog', home .. '/miniconda3/envs/conda3/bin/python')
 vim.api.nvim_set_var('ruby_host_prog', home .. '/.gem/ruby/2.6.0/gems/neovim-0.8.1/exe/neovim-ruby-host')
 
 vim.api.nvim_set_var('opamshare', home .. '/.opam/default/share')
@@ -112,8 +123,6 @@ utils.add_rtp(home .. '/.opam/default/share/merlin/vim/doc')
 utils.add_rtp(home .. '/.opam/default/share/merlin/vim')
 utils.add_rtp(home .. '/.opam/default/share/merlin/vimbufsync')
 
-cmd [[packadd vimball]]
-
 local ok, _ = pcall(function() require('lsp_config') end)
 
 if not ok then
@@ -122,12 +131,13 @@ end
 
 RELOAD = require('plenary.reload').reload_module
 
+require('plugins')
+
 R = function(name)
   RELOAD(name)
   return require(name)
 end
 
-R('plugins')
 R('nvim-web-devicons').setup()
 R('gitsigns').setup()
 R('lspkind').init()
@@ -139,7 +149,7 @@ RELOADER = function()
   R('elem.statusline')
   R('elem.plenary')
   R('elem.telescope')
-  R('elem.neofs')
+  --R('elem.neofs')
   R('mappings')
   R('globals')
   R('elem.dap')
@@ -149,10 +159,12 @@ RELOADER()
 
 utils.map_lua('n', '<leader>rc', 'RELOADER()', {noremap = true})
 
-cmd [[colorscheme space-nvim]]
-cmd [[highlight LspDiagnosticsUnderline cterm=undercurl gui=undercurl]]
-cmd [[highlight link TSError Normal]]
+g.background = "dark"
+cmd [[packadd one-nvim]]
+cmd [[colorscheme one-nvim]]
+-- cmd [[highlight link TSError Normal]]
 
 cmd [[
 command! -complete=file -nargs=* DebugC lua require "elem.dap".start_c_debugger({<f-args>}, "lldb")
 ]]
+

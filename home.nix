@@ -7,7 +7,6 @@
   imports = [
     ./role/darwin/index.nix
     ./user/emilienlemaire.nix
-    ./languages/python.nix
     ./languages/perl.nix
     ./languages/llvm.nix
   ];
@@ -41,45 +40,45 @@
     gnupg
 
     gnutls
-    git
+    # git
     lazygit
 
-    wget
+    # wget
 
-    neovim-nightly
+    # neovim-nightly
 
-    pkg-config
+    # pkg-config
 
     # Dev
-    luajit
-    luarocks
+    # luajit
+    # luarocks
 
-    ninja
+    # ninja
 
-    go
+    # go
 
-    nodejs
-    yarn
+    # nodejs
+    # yarn
 
-    rustup
+    # rustup
 
     #ocaml
     #opam
 
-    perl
+    # perl
 
-    ruby
+    # ruby
 
-    tree-sitter
-    emscripten
+    # tree-sitter
+    # emscripten
     # cmake
     # cmakeWithGui
 
     #cpp
-    abseil-cpp
-    catch2
-    grpc
-    ncurses
+    # abseil-cpp
+    # catch2
+    # grpc
+    # ncurses
 
     #llvm
     # TODO: Find a fix to make it work
@@ -91,13 +90,13 @@
     # libcxxabi
 
     #GNU Build
-    autoconf
-    automake
+    # autoconf
+    # automake
     #gcc
     #gdb
 
     #lsp
     rnix-lsp
-    texlab
+    # texlab
   ];
 }

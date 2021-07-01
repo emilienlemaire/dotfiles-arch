@@ -9,7 +9,7 @@ return require('packer').startup({
 
     -- use 'nvim-lua/completion-nvim'
     -- use 'steelsojka/completion-buffers'
-    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+    use 'nvim-treesitter/nvim-treesitter'
     use 'nvim-treesitter/playground'
     -- use 'nvim-treesitter/completion-treesitter'
     use 'nvim-treesitter/nvim-treesitter-refactor'
@@ -105,19 +105,28 @@ return require('packer').startup({
 
     use 'LnL7/vim-nix'
 
+    use 'jose-elias-alvarez/nvim-lsp-ts-utils'
+
+    use 'leafgarland/typescript-vim'
+    use 'yuezk/vim-js'
+    use {'kristijanhusak/vim-js-file-import', run = 'npm install'}
+    use 'peitalin/vim-jsx-typescript'
+    use 'mlaursen/vim-react-snippets'
+    use {'styled-components/vim-styled-components',  branch = 'main' }
+    use 'neoclide/vim-jsx-improve'
+
     -- }}}
 
     -- {{{ COLORSCHEMES
     use 'morhetz/gruvbox'
 
     use 'tjdevries/colorbuddy.vim'
-    use {
+    --[[ use {
       'Th3Whit3Wolf/spacebuddy',
       requires = {
         'tjdevries/colorbuddy.vim'
       }
-    }
-    use 'liuchengxu/space-vim-dark'
+    } ]]
 
     use 'tjdevries/express_line.nvim'
 
@@ -125,7 +134,7 @@ return require('packer').startup({
 
     use 'kyazdani42/nvim-web-devicons'
 
-    use 'Th3Whit3Wolf/space-nvim'
+    use {'Th3Whit3Wolf/one-nvim', opt = true}
 
     use 'glepnir/indent-guides.nvim'
 

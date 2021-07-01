@@ -1,15 +1,6 @@
 {config, pkgs, ...}:
 
 with pkgs;
-let
-  my-python-packages = python-packages: with python-packages; [
-    numpy
-    conda
-    python_magic
-  ];
-  python-with-myp-packages = python3.withPackages my-python-packages;
-in
-
 {
   home.username = "emilienlemaire";
 
@@ -17,7 +8,7 @@ in
     enable = true;
     userEmail = "emilien.lem@icloud.com";
     userName = "Emilien Lemaire";
-    signing.key = "5D293308027D1A5F";
+    signing.key = "F762F893588D6897DD8F6DF01FDAB38B9C3422F3";
     signing.signByDefault = true;
     extraConfig = {
       init.defaultBranch = "main";
@@ -66,16 +57,14 @@ in
     zsh-fast-syntax-highlighting
     font-awesome
 
-    python-with-myp-packages
+    # docker
 
-    docker
+    # nodePackages.vscode-html-languageserver-bin
 
-    nodePackages.vscode-html-languageserver-bin
+    # tree-sitter
 
-    tree-sitter
-
-    glew
-    glfw3
+    # glew
+    # glfw3
   ];
 
 }

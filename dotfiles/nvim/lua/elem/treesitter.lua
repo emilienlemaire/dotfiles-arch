@@ -1,14 +1,4 @@
-vim.cmd [[ packadd nvim-treesitter ]]
-
 local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
-
-parser_config.yapl = {
-    install_info = {
-        url = "~/Developpement/treesitter/tree-sitter-yapl",
-        files = {"src/parser.c"}
-    },
-    filetype = "yapl"
-}
 
 parser_config.ocaml_interface.used_by = "ocaml_interface"
 
@@ -75,5 +65,29 @@ require('nvim-treesitter.configs').setup {
        ['im'] = '@call.inner',
      },
    },
-  ensure_installed = 'all', -- one of 'all', 'language', or a list of languages
+  ensure_installed = {
+  'bash',
+  'c',
+  'cpp',
+  'css',
+  'html',
+  'javascript',
+  'json',
+  'jsonc',
+  'latex',
+  'lua',
+  'nix',
+  'ocaml',
+  'ocaml_interface',
+  'ocamllex',
+  'php',
+  'python',
+  'scss',
+  'toml',
+  'tsx',
+  'typescript',
+  'vue',
+  'yaml'
+}
+-- one of 'all', 'language', or a list of languages
 }

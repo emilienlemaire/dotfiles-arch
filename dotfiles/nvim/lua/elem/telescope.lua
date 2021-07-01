@@ -18,7 +18,7 @@ local themes = require('telescope.themes')
 
 require('telescope').setup{
   defaults = {
-    file_ignore_patterns = {[[undodir/%.*]]},
+    file_ignore_patterns = {"undodir/.*", "yarn%.lock", "node_modules/.*"},
 
     prompt_position = "top",
 

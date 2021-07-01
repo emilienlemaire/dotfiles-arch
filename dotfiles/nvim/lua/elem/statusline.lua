@@ -1,5 +1,3 @@
-vim.cmd [[packadd express_line.nvim]]
-
 pcall(RELOAD, 'el')
 
 local builtin = require('el.builtin')
