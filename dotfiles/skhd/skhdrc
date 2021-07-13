@@ -145,7 +145,7 @@ alt - f : yabai -m window --toggle zoom-fullscreen
 shift + alt - f : yabai -m window --toggle native-fullscreen
 
 # toggle window split type
-alt - e : yabai -m window --toggle split
+# alt - e : yabai -m window --toggle split
 
 # float / unfloat window and restore position
 # alt - t : yabai -m window --toggle float && /tmp/yabai-restore/$(yabai -m query --windows --window | jq -re '.id').restore 2>/dev/null || true

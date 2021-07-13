@@ -114,6 +114,10 @@ vim.g.space_vim_transp_bg = true
 vim.g.one_nvim_transparent_bg = true
 -- }}}
 
+-- {{
+vim.g.calvera_disable_background = true
+-- }}
+
 -- {{{ neoformat
 vim.g.neoformat_ocaml_ocamlformat = {
   exe = 'ocamlformat',

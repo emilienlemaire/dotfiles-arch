@@ -139,6 +139,8 @@ return require('packer').startup({
     use 'glepnir/indent-guides.nvim'
 
     use 'lilydjwg/colorizer'
+
+    use 'yashguptaz/calvera-dark.nvim'
     -- }}}
 
     -- {{{ maybe later

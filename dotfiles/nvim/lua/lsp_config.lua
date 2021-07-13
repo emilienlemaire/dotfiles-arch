@@ -250,6 +250,14 @@ lsp.rnix.setup({
   on_attach = custom_attach
 })
 
+local css_capabilities = vim.lsp.protocol.make_client_capabilities()
+css_capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+lsp.cssls.setup {
+  on_attach = custom_attach,
+  capabilities = css_capabilities,
+}
+
 local configs = require('lspconfig/configs')
 
 configs.ocamlls = {
